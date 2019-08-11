@@ -1,0 +1,51 @@
+server:
+  port: 8081
+spring:
+  profiles: dev
+  datasource:
+    url: jdbc:mysql://localhost:3306/08_03
+    username: root
+    password:
+  application:
+        name: user-service # 应用名称
+mybatis:
+  type-aliases-package: com.yuxuepeng.pojo
+  configuration:
+    map-underscore-to-camel-case: true  #字段实体属性映射驼峰转换
+logging:
+  level:
+    com.yuxuepeng.mapper: debug  #sql日志打印
+eureka:
+  client:
+    service-url: # EurekaServer地址
+      defaultZone: http://127.0.0.1:10086/eureka
+  instance:
+    prefer-ip-address: true # 当调用getHostname获取实例的hostname时，返回ip而不是host名称
+    ip-address: 127.0.0.1 # 指定自己的ip信息，不指定的话会自己寻找
+
+---
+
+server:
+  port: 8082
+spring:
+  profiles: test
+  datasource:
+    url: jdbc:mysql://localhost:3306/08_04
+    username: root
+    password:
+  application:
+        name: user-service # 应用名称
+mybatis:
+  type-aliases-package: com.yuxuepeng.pojo
+  configuration:
+    map-underscore-to-camel-case: true  #字段实体属性映射驼峰转换
+logging:
+  level:
+    com.yuxuepeng.mapper: debug  #sql日志打印
+eureka:
+  client:
+    service-url: # EurekaServer地址
+      defaultZone: http://127.0.0.1:10087/eureka
+  instance:
+    prefer-ip-address: true # 当调用getHostname获取实例的hostname时，返回ip而不是host名称
+    ip-address: 127.0.0.1 # 指定自己的ip信息，不指定的话会自己寻找
